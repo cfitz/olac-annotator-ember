@@ -1,0 +1,25 @@
+<div class='row'>
+  {{ view Bootstrap.AlertMessage messageBinding='view.message' classNameBindings='view.showMessage:alert-info:disabled' }}
+</div>
+
+<div class='row'>
+  <div class="well interest" >
+    <h4 id="random_interest">{{text}}</h4>
+  </div>
+</div>
+
+
+{{ render 'annotationEdits' annotations  }}
+
+
+<div class="row action-row">
+  <div class="span4 action-item">
+    <a class="btn btn-link add-annotation" {{ action addAnnotation }}><i class='icon-plus-sign'></i> Add a new line for another name or role</a>
+    <a class="btn btn-link add-annotation" {{ action showCommentModal target='view' }}><i class='icon-comment'></i> Comment about this credit</a>
+  </div>
+  <div class="actions action-item">
+    <a class="btn btn-danger btn-large" href="/">Quit</a>
+    <a class="btn btn-info btn-large"  {{action skip}}">Skip</a>
+    <button type="submit" {{action save }} class="btn btn-primary btn-large submit-annotation" {{bindAttr disabled="controller.isNoteInvalid"}}>Submit</button>
+  </div>
+</div>

@@ -1,0 +1,47 @@
+<div class="row annotation-fields">
+    <div class='remove-row'>
+      <a {{action removeAnnotation this }}><i class='icon-remove-sign'></i></a>
+    </div>
+    <div class='span3'>
+      <label for="name in credit">Name in credit:</label> 
+      
+      {{view App.ValidateAgainstField valueBinding="name" field='name' classNames="name-in-credit validate-nameValueInCredit required" required=true errorMessage="The text for the name should be copied exactly from the credit text above." }} 
+      
+      <i {{bindAttr class="nameError:icon-exclamation-sign:icon-ok"}}></i>
+       <a class="annon_tooltip" data-html="true" data-original-title="Copy one name from the credit above." data-toggle="tooltip"  rel="tooltip"><i class='icon-question-sign'></i></a>
+    </div>
+    <div  class='span3'>
+      <label for="match for name in credit">Match for name in credit:</label>  
+             
+      {{view Ember.Select 
+                valueBinding="canonical_name"
+                contentBinding="view.authority_names" 
+                optionValuePath="content.name" optionLabelPath="content.name" 
+                prompt="--Select--"}}
+        <i class='icon-ok'></i>
+       <a class="annon_tooltip" data-html="true" data-original-title="Match the name in the credit to a name in the pulldown list.&lt;br/&gt;&lt;br/&gt; If there is no matching name, choose 'No matching name in list.'&lt;br/&gt;&lt;br/&gt; If you are not sure of the match, make a note in the comments box." data-toggle="tooltip"  rel="tooltip"><i class='icon-question-sign'></i></a>
+      
+     
+      {{ view App.LanguageOfRoleOrFunctionSlave valueBinding="role_language" classNames="language-textfield"  }}
+     
+     
+    </div>
+    <div  class='span3'>
+      <label for="nlp_interests_attributes_0_insights_attributes_0_Role or function in credit">Role or function in credit:</label> 
+     
+      {{view App.ValidateAgainstField valueBinding="role" field='role' classNames="role-in-credit roleValueInCredit" required=false errorMessage="The text for the role should be copied exactly from the credit text above. If there is no text indicating a role, you can leave this field blank. "}}
+      <i {{bindAttr class="roleError:icon-exclamation-sign:icon-ok"}}></i>
+       <a class="annon_tooltip" data-html="true" data-original-title="Copy one role or function from the credit above.&lt;br/&gt;&lt;br/&gt; If there is no role or function in the credit, leave this box blank. Examples of such credits would be 'PBS Home Video' or 'Tom Smith.' &lt;br/&gt;&lt;br/&gt; If there is more than one role or function in the credit, use the 'Add a new line for another name or role' link to make a new line, repeat the name and put each role or function in its own box.&lt;br/&gt;&lt;br/&gt; If you’re not sure what to do with a complicated credit, check out the Examples button (upper right) or put something in the comments box (lower left)." data-toggle="tooltip"  rel="tooltip"><i class='icon-question-sign'></i></a>
+      
+      
+    
+    </div>
+    <div  class='span3'>
+      <label for="nlp_interests_attributes_0_insights_attributes_0_English translation of role/function">English translation of role/function:</label> 
+      {{view Ember.TextField valueBinding="role_translation" className="role-in-credit roleValueInCredit" disabledBinding='isRoleLanguageEnglish' }}
+    <i class='icon-ok'></i>
+    <a class="annon_tooltip" data-html="true" data-original-title="Provide a literal English translation of the role or function in the credit if it’s not in English. &lt;br/&gt;&lt;br/&gt; For example, for “guioìn, Federico Garciìa Serrano,” record “script.” &lt;br/&gt;&lt;br/&gt; For “dirigida por Luis Estrada,” record “directed by.”" data-toggle="tooltip" rel="tooltip"><i class='icon-question-sign'></i></a> 
+     
+    </div>
+</div>
+

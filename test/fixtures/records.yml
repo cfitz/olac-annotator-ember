@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  marc_hash: 
+  title: MyString
+  record_id: MyString
+
+two:
+  marc_hash: 
+  title: MyString
+  record_id: MyString

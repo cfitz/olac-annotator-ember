@@ -1,0 +1,15 @@
+<%= form_tag( review_path(format: 'csv' ), method: "search",  class: 'form-horizontal'  ) do %>
+   <div class="control-group">
+      <%= label_tag(:per_page, "Number Of Records:", class: "control-label" ) %>
+      <div class="controls">
+        <%= text_field_tag(:per_page,  100) %>
+      </div>
+    </div>
+     <div class="control-group">
+        <%= label_tag(:page, "Page Offset:", class: "control-label" ) %>
+        <div class="controls">
+          <%= text_field_tag(:page, 1) %>
+        </div>
+      </div>
+  <%= submit_tag("Review Annotations") %>
+<% end %>

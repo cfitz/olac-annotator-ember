@@ -1,0 +1,11 @@
+<div class="row">
+
+   <div class="well language-of-role language-fields control-group" >
+     {{ view App.LanguageOfRoleOrFunctionContainer }}
+  </div>
+</div>
+<div class='annotations'>
+{{#each  controller itemController='annotationEdit' }}
+     {{ view App.AnnotationEditView  }}
+{{/each}}
+</div>
