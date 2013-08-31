@@ -32,7 +32,9 @@ group :doc do
 end
 
 group :assets do
+
 end
+gem "therubyracer"
 
 gem "active_model_serializers"
 gem 'ember-rails', github: 'emberjs/ember-rails'
