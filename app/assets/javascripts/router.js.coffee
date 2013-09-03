@@ -1,5 +1,6 @@
 App.Router.map ->
   this.route("about", { path: "/about" })
+  this.route("more", { path: "/more" })
   this.route("credits", { path: "/credits" })
   this.resource('record', {path: 'record/:record_id'})
   this.resource("notes", () -> 
