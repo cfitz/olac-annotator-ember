@@ -16,9 +16,9 @@ class ReviewController < ApplicationController
     anno = @notes.collect { |n| n.annotations }
     @annotations = anno.flatten
   
-    csv = [["note id", "record title", "record language",  "credit", "annotated role language", "annotated name", 'annotated canonical name',  "annotated role", "annotated role translation" ]]
+    csv = [["note id", "record title", "record language",  "credit", "annotated role language", "annotated name", 'annotated canonical name',  "annotated role", "annotated role translation", "approved" ]]
     @annotations.each do |annotation|  
-      csv << [annotation.note.id , annotation.note.record_title, annotation.note.language, annotation.note.text, annotation.role_language, annotation.name, annotation.canonical_name, annotation.role, annotation.role_translation ]
+      csv << [annotation.note.id , annotation.note.record_title, annotation.note.language, annotation.note.text, annotation.role_language, annotation.name, annotation.canonical_name, annotation.role, annotation.role_translation, annotation.approved? ]
     end  
     
     @csv = ""
