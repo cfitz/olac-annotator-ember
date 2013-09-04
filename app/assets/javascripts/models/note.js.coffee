@@ -9,6 +9,8 @@ App.Note = DS.Model.extend(
   record: DS.belongsTo("App.Record")
   authority_names: DS.attr('array')
   
-
-  
+  marc_language_upped: (->
+    lang = this.get('marc_language')
+    return lang.charAt(0).toUpperCase() + lang.slice(1)
+  ).property('marc_language')
 )

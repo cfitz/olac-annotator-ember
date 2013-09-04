@@ -13,8 +13,8 @@ modalPaneTemplate = [
 
 
 App.NoteAnnotateView = Ember.View.extend
-  showMessage: false
-  message: ""
+  showMessage: true
+  message: '<ol><li>Copy the words in the credit to the "name in credit" or "role or function in credit boxes." </li><li> Some words may be left over. </li><li> Fill in the other boxes with additional information about the credit. </li><li> Click the instructions link in the upper right for more help.</li></ol>'
   showSuccess: (text) ->
     this.set('message', text)
     this.set('showMessage', true)

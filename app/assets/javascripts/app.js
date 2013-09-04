@@ -107,6 +107,5 @@ Ember.Object.create({ value: 'slavic', label: 'Slavic (other than Russian and Po
 Ember.Object.create({ value: 'thai', label: 'Thai and Lao'}),
 Ember.Object.create({ value: 'turkish', label: 'Turkish, Kazak, Uighur, Uzbek'}),
 Ember.Object.create({ value: 'vietnamese', label: 'Vietnamese'}),
-Ember.Object.create({ value: 'other_lang', label: 'Other languages'}),
-Ember.Object.create({ value: 'music_dance', label: 'or work on music and dance videos'})
+Ember.Object.create({ value: 'other_lang', label: 'Other languages'})
 ]

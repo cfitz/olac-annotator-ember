@@ -2,7 +2,7 @@ App.AnnotationEditsController = Ember.ArrayController.extend({
   needs: [ 'annotationEdit', 'noteAnnotate' ]
   itemController: 'annotationEdit'
   roleLanguageError: true # we start off in error
-  roleLangBinding: Ember.Binding.from('controllers.noteAnnotate.model.marc_language')
+  roleLangBinding: Ember.Binding.from('controllers.noteAnnotate.model.marc_language_upped')
 
   content: []
 

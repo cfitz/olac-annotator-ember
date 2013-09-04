@@ -13,14 +13,14 @@ instructions_modal =
       <li>Copy one name from the credit into the "Name in credit" box.</li>
       <li>Look for the name you copied from the credit in the "Match for name in credit" dropdown list and select it if it's present.</li>
       <li>If there is a role or function in the credit, copy one role or function into the "Role or function in credit" box.</li>
-      <li>Give a literal English translation of the role or function from the credit in the next box if it's not already in English.</li>
+      <li>In the next box, give a literal English translation of the role or function from the credit if the credit's not already in English.</li>
       <li>Use “add a new line” to make a row for each combination of name and role or function.</li>
       <li>Use the comments box to let us know about anything you're unsure about.</li>
       </ol>
       <h5>
       Three basic examples are below. Use these
       <a href="/examples.pdf" class="page-link" target="_blank">additional examples</a>
-      as guidelines if you have a more complex credit statement, such as "produced by United Broadcasting Inc. for Channel 4."  Return to these instructions at any time by clicking on the orange instructions button in the upper right corner of the screen.
+      as guidelines if you have a more complex credit statement, such as "produced by United Broadcasting Inc. for Channel 4."  Return to these instructions at any time by clicking on the instructions link in in the upper right corner of the screen.
       </h5>
       <table class="table table-bordered">
       <tbody>
