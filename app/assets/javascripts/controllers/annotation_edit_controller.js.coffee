@@ -16,11 +16,13 @@ App.AnnotationEditsController = Ember.ArrayController.extend({
       controller.some(hasErrors)
 
     roleLang = this.get('roleLang')
-    doWeHaveAProblem = ( recurseAndFindErrors(this) || !roleLang? )
-    
+    comment = this.get('controllers.noteAnnotate.commentOrProblem')
+
+    doWeHaveAProblem = ( recurseAndFindErrors(this) || !roleLang?  )
+    doWeHaveAProblem = false if !!comment
     noteAnnotateController =  this.get("controllers.noteAnnotate")
     this.set("controllers.noteAnnotate.isNoteInvalid", doWeHaveAProblem)
-  ).observes( 'this.@each.nameError', 'this.@each.roleError', 'this.roleLanguageError' )
+  ).observes( 'this.@each.nameError', 'this.@each.roleError', 'this.roleLanguageError', 'controllers.noteAnnotate.commentOrProblem' )
   
 
   validateLanguageOfRole: ( text ) ->
@@ -33,6 +35,8 @@ App.AnnotationEditsController = Ember.ArrayController.extend({
 
 App.AnnotationEditController = Ember.ObjectController.extend({
   needs: [ 'annotationEdits', 'noteAnnotate' ]
+  commentOrProblem: null
+  commentOrProblemBinding: Ember.Binding.from('controllers.noteAnnotate.commentOrProblem')
   
   removeAnnotation: (annotation) ->
     annotation.deleteRecord()
@@ -52,7 +56,7 @@ App.AnnotationEditController = Ember.ObjectController.extend({
     words = words.replace("...", "")
     checkWords = words.split " "
     
-    return this.setError(field, !isRequired ) if words.length < 1
+    return this.setError(field, isRequired ) if words.length < 1
    
     credit = " " + this.get('controllers.noteAnnotate.model.text') + " "
     

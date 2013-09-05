@@ -80,6 +80,7 @@ App.AnnotationEditsView = Ember.View.extend({
   updateLangGuess: ->
     true
   didInsertElement: ->
+    this.set('controller.controllers.noteAnnotate.commentOrProblem', '')
     this.set('marc_language',  ) 
 })
 

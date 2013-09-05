@@ -1,3 +1,22 @@
+App.CommentViewMaster =  Bootstrap.Forms.TextArea.extend({
+  classNames: ["comment-master"]
+  label: "Comment or Problem"
+  valueBinding: 'this.controller.commentOrProblem'
+})
+
+App.CommentViewSlave = Ember.TextField.extend({  
+  classNames: ["comment-slave"]
+  updateValue: (->
+    controller = this.get('controller')   
+    this.set('value',  controller.get('commentOrProblem') )
+  ).observes('controller.commentOrProblem')
+
+  didInsertElement: ->
+    this.set('value', this.get('controller.commentOrProblem'))
+
+})
+
+
 modalPaneTemplate = [
   '<div class="modal-header">',
   '  <a href="#" class="close" rel="close">&times;</a>',
@@ -14,7 +33,7 @@ modalPaneTemplate = [
 
 App.NoteAnnotateView = Ember.View.extend
   showMessage: true
-  message: '<ol><li>Copy the words in the credit to the "name in credit" or "role or function in credit boxes." </li><li> Some words may be left over. </li><li> Fill in the other boxes with additional information about the credit. </li><li> Click the instructions link in the upper right for more help.</li></ol>'
+  message: '<ol><li>Copy the words in the credit to the "name in credit" or "role or function in credit" boxes. </li><li> Some words may be left over. </li><li> Fill in the other boxes with additional information about the credit. </li><li> Click the instructions link in the upper right for more help.</li></ol>'
   showSuccess: (text) ->
     this.set('message', text)
     this.set('showMessage', true)

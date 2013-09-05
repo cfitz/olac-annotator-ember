@@ -15,7 +15,7 @@
 <div class="row action-row">
   <div class="span4 action-item">
     <a class="btn btn-link add-annotation" {{ action addAnnotation }}><i class='icon-plus-sign'></i> Add a new line for another name or role</a>
-    <a class="btn btn-link add-annotation" {{ action showCommentModal target='view' }}><i class='icon-comment'></i> Comment about this credit</a>
+   {{ view App.CommentViewMaster }}
   </div>
   <div class="actions action-item">
     <a class="btn btn-danger btn-large" href="/">Quit</a>

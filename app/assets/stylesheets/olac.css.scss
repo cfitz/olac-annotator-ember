@@ -77,7 +77,8 @@ div.comment-field label { display: inline-block; padding-right: 12px; }
   ul { width: 100%; margin: 0;
    li { width: 50%; padding: 0; margin: 0px; }} }
 
-
+input.comment-slave { display: none; }
+.form-horizontal div.comment-master { label { text-align: left } textarea { min-width: 500px }  }
 
    .tooltip{position:absolute;z-index:1030;display:block;visibility:visible;font-size:14px;line-height:1.4;opacity:0;filter:alpha(opacity=0);}.tooltip.in{opacity:0.9;filter:alpha(opacity=90);}
 
@@ -95,6 +96,9 @@ a.page-link { color: #0088cc;
 }
 .annotation-fields {  
   margin-bottom: 10px;
+  
+  select { width: 200px }
+  
 } 
 
 .remove-row {

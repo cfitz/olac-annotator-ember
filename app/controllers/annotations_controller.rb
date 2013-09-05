@@ -10,7 +10,7 @@ class AnnotationsController < ApplicationController
   private
   
   def annotation_params
-    params.require(:annotation).permit(:name, :canonical_name, :role, :role_translation, :role_language, :comment, :note_id, :approved)
+    params.require(:annotation).permit(:name, :canonical_name, :role, :role_translation, :role_language, :comment, :note_id, :approved )
   end
 
 end

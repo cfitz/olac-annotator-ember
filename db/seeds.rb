@@ -42,7 +42,11 @@ def index_marc(file)
 end
 
 def process_record(record, language)
-   record_id = record["001"] ? record["001"].value : rand(0..100).to_s
+   
+   # record_id = record["001"] ? record["001"].value : rand(0..100).to_s
+   if record["999"] and record["999"]["a"]
+     record_id = record["999"]["a"]
+   end
    
    
    marc_lang = record['008'] ? LANG_DICTIONARY[record['008'].value[35..37]] : nil

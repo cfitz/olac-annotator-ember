@@ -1,4 +1,5 @@
 App.NotesRandomController = Ember.ObjectController.extend({
+  needs: [ 'noteAnnotate' ]
   getRandom: (language) ->
     $('.well.interest').toggleClass('static')
     $('.language-of-role-inner').toggleClass('disabled')
@@ -9,6 +10,7 @@ App.NotesRandomController = Ember.ObjectController.extend({
   transition: (note) ->
     $('.well.interest').toggleClass('static') 
     $('.language-of-role-inner').toggleClass('disabled')
+    @.set('controllers.noteAnnotate.commentOrProblem', null)
     this.transitionToRoute('note.annotate', note )   
     @get('stateManager').transitionTo('loaded.saved') 
 

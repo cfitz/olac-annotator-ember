@@ -1,6 +1,7 @@
 App.NoteAnnotateController = Ember.ObjectController.extend({
   needs: [ 'notesRandom' ]
   isNoteInvalid: true
+  commentOrProblem: null 
   startAnnotating: () ->
     note = this.get('model')    
     transaction = note.get('store').transaction()
@@ -24,7 +25,6 @@ App.NoteAnnotateController = Ember.ObjectController.extend({
     this.get('model.annotations').createRecord()
     
   updateStatus: (status) ->
-    console.log "UPDATE  " + status
     this.set('isNoteInvalid', status)
     
   

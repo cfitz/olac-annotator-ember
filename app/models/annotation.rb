@@ -2,7 +2,7 @@ class Annotation
   include Mongoid::Document
   include Mongoid::Timestamps
   
-  validates :role_language, :presence => { :message => "The language field cannot be blank." }
+#  validates :role_language, :presence => { :message => "The language field cannot be blank." }
   scope :need_approval, where( :approved == true )
   
   field :name, type: String
@@ -11,6 +11,7 @@ class Annotation
   field :role_translation, :type => String
   field :role_language, :type => String
   field :approved, :type => Boolean, :default => false
+  field :comment
 
   embedded_in :note
 
