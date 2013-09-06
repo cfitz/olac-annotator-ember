@@ -2,11 +2,12 @@
 App.LanguageOfRoleOrFunctionSlave = Ember.TextField.extend({  
   updateValue: (->
     controller = this.get('controller.parentController')   
-    this.set('value',  controller.get('roleLang') )
-  ).observes('controller.parentController.roleLang')
+    this.set('value',  controller.get('roleLanguage') )
+  ).observes('controller.parentController.roleLanguage')
 
+  # set the value of the slave to whatever the current roleLang vlaue is
   didInsertElement: ->
-    this.set('value', this.get('controller.parentController.roleLang'))
+    this.set('value', this.get('controller.parentController.roleLanguage'))
    
 })
 
@@ -18,14 +19,19 @@ App.LanguageOfRoleOrFunctionMaster = Ember.Select.extend({
   contentBinding: "App.languages" 
   optionValuePath: "content.value"
   optionLabelPath: "content.label"
-  valueBinding: "controller.roleLang"
+  valueBinding: "controller.roleLanguage"
   prompt: "--Select--"
   didInsertElement: ->
     this.insertPopover()
-  focusOut: ->
-    controller = this.get('controller') 
-    validation = controller["validateLanguageOfRole"](this.get('value'))
-    $("##{this.get('elementId')}").popover('show') if validation == false  ## sloppy. need to bind this to controller too    
+    $("##{this.get('elementId')}").popover('hide') 
+
+  showPopup: (->
+    error = this.get('controller.roleLanguageError') 
+    if error == true  ## sloppy. need to bind this to controller too    
+        $("##{this.get('elementId')}").popover('show') 
+    else
+        $("##{this.get('elementId')}").popover('hide') 
+  ).observes('controller.roleLanguageError')
   insertPopover: () ->
      $("##{this.get('elementId')}").popover(
        trigger: "manual"
@@ -80,14 +86,20 @@ App.AnnotationEditsView = Ember.View.extend({
   updateLangGuess: ->
     true
   didInsertElement: ->
-    this.set('controller.controllers.noteAnnotate.commentOrProblem', '')
-    this.set('marc_language',  ) 
+    this.set('marc_language',  )
+
+ 
 })
 
 App.AnnotationEditView = Ember.View.extend({
   templateName: 'annotation'
   authority_names: null
   didInsertElement: ->
+    # this view is reinserted on skip and save. Good place to reset some values.
+    this.set('controller.parentController.roleLanguage', null)
+    this.set('controller.parentController.roleLanguageError', true)
+    this.set('controller.controllers.noteAnnotate.commentOrProblem', '')
+    $('.popover').hide()
     $(".annon_tooltip").tooltip()
     auth_names = [ Ember.Object.create({ name: "No matching name in list" }) ]
     auth_names.push(name) for name in this.get('controller.model.note.authority_names')

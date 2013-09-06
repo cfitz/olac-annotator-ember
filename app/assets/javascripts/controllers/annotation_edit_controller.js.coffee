@@ -2,7 +2,9 @@ App.AnnotationEditsController = Ember.ArrayController.extend({
   needs: [ 'annotationEdit', 'noteAnnotate' ]
   itemController: 'annotationEdit'
   roleLanguageError: true # we start off in error
-  roleLangBinding: Ember.Binding.from('controllers.noteAnnotate.model.marc_language_upped')
+  roleLanguage: null
+  roleLangGuess: null
+  roleLangGuessBinding: Ember.Binding.from('controllers.noteAnnotate.model.marc_language_upped')
 
   content: []
 
@@ -15,21 +17,22 @@ App.AnnotationEditsController = Ember.ArrayController.extend({
     recurseAndFindErrors = (controller) ->
       controller.some(hasErrors)
 
-    roleLang = this.get('roleLang')
+    roleLang = this.get('roleLanguage')
     comment = this.get('controllers.noteAnnotate.commentOrProblem')
 
     doWeHaveAProblem = ( recurseAndFindErrors(this) || !roleLang?  )
     doWeHaveAProblem = false if !!comment
+
     noteAnnotateController =  this.get("controllers.noteAnnotate")
     this.set("controllers.noteAnnotate.isNoteInvalid", doWeHaveAProblem)
   ).observes( 'this.@each.nameError', 'this.@each.roleError', 'this.roleLanguageError', 'controllers.noteAnnotate.commentOrProblem' )
   
 
-  validateLanguageOfRole: ( text ) ->
-    isEmpty = !text?
-    @.set("roleLanguageError", isEmpty) # text? returns true is content. 
-    !isEmpty
-
+  validateLanguageOfRole: (->
+    text = this.get("roleLanguage")
+    @.set("roleLanguageError", !text?) # text? returns true is content. 
+    !text?
+  ).observes('this.roleLanguage')
 });
 
 
@@ -74,8 +77,5 @@ App.AnnotationEditController = Ember.ObjectController.extend({
     this.setError(field, !areTermsInCredit )
     areTermsInCredit
 
-
-      
-  
   
 })
