@@ -1,6 +1,6 @@
 App.CommentViewMaster =  Bootstrap.Forms.TextArea.extend({
   classNames: ["comment-master"]
-  label: "Comment or Problem"
+  label: ""
   valueBinding: 'this.controller.commentOrProblem'
 })
 

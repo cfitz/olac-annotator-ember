@@ -15,7 +15,9 @@
 <div class="row action-row">
   <div class="span4 action-item">
     <a class="btn btn-link add-annotation" {{ action addAnnotation }}><i class='icon-plus-sign'></i> Add a new line for another name or role</a>
+    <label for="name in credit">Comment Or Problems: <a class='annon_tooltip' data-html='true' data-original-title='Let us know about anything unusual or that you\'re unsure of about this credit' data-toggle='tooltip'  rel='tooltip'><i class='icon-question-sign'></i></a></label>
    {{ view App.CommentViewMaster }}
+   
   </div>
   <div class="actions action-item">
     <a class="btn btn-danger btn-large" href="/">Quit</a>
