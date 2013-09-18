@@ -35,7 +35,7 @@ input, textarea, .uneditable-input { width: 180px; }
 .modal { width: 637px; }
 
 .header-buttons { float: right; 
-    a { margin: 0 39px; }}
+    a { margin: 0 35px; }}
 
 
 
@@ -44,8 +44,7 @@ input.language-textfield { display: none; }
 div.language-of-role {
   text-align: center;
   background: beige;
-  min-height: 55px;
-  .language-of-role-select, label { text-align: left; margin-left: 30px }
+  .language-of-role-inner { display: inline-block; } 
   
 }
 
@@ -136,16 +135,16 @@ a.page-link { color: #0088cc;
  }
 
 .interest:after {
-  content: "Credit";
+  content: "Please Annotate This Credit:";
   position: absolute;
   top: -1px;
   left: -1px;
-  padding: 3px 7px;
-  font-size: 12px;
+  padding: 5px 9px;
+  font-size: 15px;
   font-weight: bold;
+  color: #0088cc;
   background-color: #f5f5f5;
   border: 1px solid #ddd;
-  color: #9da0a4;
   -webkit-border-radius: 4px 0 4px 0;
   -moz-border-radius: 4px 0 4px 0;
   border-radius: 4px 0 4px 0;

@@ -95,10 +95,6 @@ App.AnnotationEditView = Ember.View.extend({
   templateName: 'annotation'
   authority_names: null
   didInsertElement: ->
-    # this view is reinserted on skip and save. Good place to reset some values.
-    this.set('controller.parentController.roleLanguage', null)
-    this.set('controller.parentController.roleLanguageError', true)
-    this.set('controller.controllers.noteAnnotate.commentOrProblem', '')
     $('.popover').hide()
     $(".annon_tooltip").tooltip()
     auth_names = [ Ember.Object.create({ name: "No matching name in list" }) ]
