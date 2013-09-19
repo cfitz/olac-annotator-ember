@@ -100,7 +100,7 @@ App.NoteView = Ember.View.extend
     this.buildModal("Instructions", instructions_modal )
   showContactUsModal: ->
     this.buildModal("Contact Us", contact_modal)
-  didInsertElement: -> 
+  didInsertElement: ->
     if App.cameFromeHomepage == true
       this.showInstructionsModal()
       App.cameFromeHomepage = false

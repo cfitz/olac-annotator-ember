@@ -27,6 +27,10 @@ App.AnnotationEditsController = Ember.ArrayController.extend({
     this.set("controllers.noteAnnotate.isNoteInvalid", doWeHaveAProblem)
   ).observes( 'this.@each.nameError', 'this.@each.roleError', 'this.roleLanguageError', 'controllers.noteAnnotate.commentOrProblem' )
   
+  skipOrSave: (->
+    this.set('roleLanguage', null)
+    this.set('roleLanguageError', true)
+   ).observes('controllers.noteAnnotate.recordNumber')
 
   validateLanguageOfRole: (->
     text = this.get("roleLanguage")
