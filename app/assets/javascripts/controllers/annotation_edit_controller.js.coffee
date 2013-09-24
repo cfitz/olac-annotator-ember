@@ -44,7 +44,8 @@ App.AnnotationEditController = Ember.ObjectController.extend({
   needs: [ 'annotationEdits', 'noteAnnotate' ]
   commentOrProblem: null
   commentOrProblemBinding: Ember.Binding.from('controllers.noteAnnotate.commentOrProblem')
-  
+  roleWarning: false
+
   removeAnnotation: (annotation) ->
     annotation.deleteRecord()
     
@@ -56,7 +57,17 @@ App.AnnotationEditController = Ember.ObjectController.extend({
 
   setError: (field, isError ) ->
     this.set("#{field}Error", isError)
-  
+ 
+  checkWarnings: (field) ->
+    if field != "role"
+      return false
+    else
+      roleText = @.get(field)
+      searcher = new RegExp(/\band\b|\&|\+|\/|\,/gi)
+      if roleText.search(searcher) >= 0
+        return true
+      else
+        return false
   validateAgainstCredit: ( field, isRequired = false) ->
     words = @.get(field)
     words ||= ""

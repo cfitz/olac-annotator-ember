@@ -50,11 +50,26 @@ App.ValidateAgainstField = Ember.TextField.extend({
     cont['setError']("name", true)
     cont['setError']("role", false)
     this.insertPopover()
+    this.insertWarning()
     $('form').on("click",".popover",  ( => $(".popover").hide() ))
   focusOut: (event) ->
-    controller = this.get('controller')    
+    controller = this.get('controller')
     validation = controller["validateAgainstCredit"](this.field,  this.required  )
+    warning = controller["checkWarnings"](this.field)
     this.popover(!validation) # if validation is false, we show the popover. else hide it.
+    this.showWarning(warning)
+  showWarning: ( doShow) ->
+    cmd = if doShow == true then "show" else "hide"
+    $("##{this.get('elementId')}").parent().popover(cmd)
+  insertWarning: () ->
+    console.log this.get('elementId')
+    $("##{this.get('elementId')}").parent().popover(
+      trigger: "manual"
+      placement: "right"
+      content: "If there is more than one role or function in the credit, use the 'Add a new line for another name or role” link to make a new line, repeat the name and put each role or function in its own box. For example, 'produced and directed by Jane Jones and Sam Smith” should result in four lines: (1) 'Jane Jones” and 'produced by”; (2) 'Jane Jones” and 'directed by”; (3) 'Sam Smith” and 'produced by”; (4) 'Sam Smith” and 'directed by.”" 
+      html: true
+      title: "#{this.get('field').toUpperCase()} WARNING <div class=\"popover-destroy\">x</div> "
+    )
   insertPopover: () ->
     $("##{this.get('elementId')}").popover(
       trigger: "manual"
@@ -97,6 +112,7 @@ App.AnnotationEditView = Ember.View.extend({
   didInsertElement: ->
     $('.popover').hide()
     $(".annon_tooltip").tooltip()
+    $('annon_warning_tooltip').tooltip()
     auth_names = [ Ember.Object.create({ name: "No matching name in list" }) ]
     auth_names.push(name) for name in this.get('controller.model.note.authority_names')
     this.set('authority_names', auth_names)  
