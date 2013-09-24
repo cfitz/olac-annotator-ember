@@ -1,3 +1,7 @@
+App.compact = (array) -> 
+  item for item in array when item
+
+
 App.AnnotationEditsController = Ember.ArrayController.extend({
   needs: [ 'annotationEdit', 'noteAnnotate' ]
   itemController: 'annotationEdit'
@@ -72,8 +76,7 @@ App.AnnotationEditController = Ember.ObjectController.extend({
     words = @.get(field)
     words ||= ""
     words = words.replace("...", "")
-    checkWords = words.split " "
-    
+    checkWords = App.compact(words.split " ")
     return this.setError(field, isRequired ) if words.length < 1
    
     credit = " " + this.get('controllers.noteAnnotate.model.text') + " "

@@ -62,7 +62,6 @@ App.ValidateAgainstField = Ember.TextField.extend({
     cmd = if doShow == true then "show" else "hide"
     $("##{this.get('elementId')}").parent().popover(cmd)
   insertWarning: () ->
-    console.log this.get('elementId')
     $("##{this.get('elementId')}").parent().popover(
       trigger: "manual"
       placement: "right"
