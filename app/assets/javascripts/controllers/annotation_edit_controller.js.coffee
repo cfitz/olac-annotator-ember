@@ -67,9 +67,7 @@ App.AnnotationEditController = Ember.ObjectController.extend({
       return false
     else
       roleText = @.get(field)
-      if not roleText?
-        return true
-      end
+      return true if not roleText?
       searcher = new RegExp(/\band\b|\&|\+|\/|\,/gi)
       if roleText.search(searcher) >= 0
         return true

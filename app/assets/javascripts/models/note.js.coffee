@@ -10,6 +10,7 @@ App.Note = DS.Model.extend(
   
   marc_language_upped: (->
     lang = this.get('marc_language')
+    return "" if not lang?
     return lang.charAt(0).toUpperCase() + lang.slice(1)
   ).property('marc_language')
 )
