@@ -41,7 +41,7 @@ App.AnnotationEditsController = Ember.ArrayController.extend({
     @.set("roleLanguageError", !text?) # text? returns true is content. 
     !text?
   ).observes('this.roleLanguage')
-});
+})
 
 
 App.AnnotationEditController = Ember.ObjectController.extend({
@@ -67,6 +67,9 @@ App.AnnotationEditController = Ember.ObjectController.extend({
       return false
     else
       roleText = @.get(field)
+      if not roleText?
+        return true
+      end
       searcher = new RegExp(/\band\b|\&|\+|\/|\,/gi)
       if roleText.search(searcher) >= 0
         return true
