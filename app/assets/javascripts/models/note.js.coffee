@@ -7,10 +7,11 @@ App.Note = DS.Model.extend(
   annotations: DS.hasMany('App.Annotation')
   record: DS.belongsTo("App.Record")
   authority_names: DS.attr('array')
-  
+  updatedAnnotation: false
   marc_language_upped: (->
     lang = this.get('marc_language')
     return "" if not lang?
     return lang.charAt(0).toUpperCase() + lang.slice(1)
   ).property('marc_language')
+  
 )

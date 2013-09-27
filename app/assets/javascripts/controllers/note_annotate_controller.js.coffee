@@ -1,6 +1,7 @@
 App.NoteAnnotateController = Ember.ObjectController.extend({
   needs: [ 'notesRandom', 'annotationEdits' ]
   recordNumber: 1
+  language: 'english'
   isNoteInvalid: true
   commentOrProblem: null
   startAnnotating: () ->
@@ -27,14 +28,17 @@ App.NoteAnnotateController = Ember.ObjectController.extend({
       this.commit()
 
   commit: () ->
+    language = this.get('model.language')
+    this.set('language', language)
     this.transaction.commit()
-    thisController = this
-    setTimeout (->
-      notesRandomController = thisController.get('controllers.notesRandom')
-      notesRandomController.getRandom(thisController.get('model.language'))
-      recordNumber = thisController.get('recordNumber')
-      thisController.set('recordNumber', recordNumber + 1)
-    ), 250 
+  
+  annotationUpdated: (->
+    updated = this.get('model.updatedAnnotation')
+    if updated == true
+      notesRandomController = this.get('controllers.notesRandom')
+      notesRandomController.getRandom(this.get('language'))
+   ).observes('this.model.updatedAnnotation')
+  
   addAnnotation: () ->
     this.get('model.annotations').createRecord()
     

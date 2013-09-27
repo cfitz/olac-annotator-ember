@@ -7,7 +7,9 @@ App.Annotation = DS.Model.extend(
   approved: DS.attr("boolean")
   note: DS.belongsTo('App.Note')
   comment: DS.attr("string")
-  
+  didCreate: ->
+    note = this.get('note')
+    note.set('updatedAnnotation', true)
   isRoleLanguageEnglish: (->
     this.get('role_language') ==  "english"
   ).property('role_language')
