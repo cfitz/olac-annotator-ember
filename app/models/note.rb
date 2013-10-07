@@ -44,7 +44,7 @@ class Note
   
   # When we are in annotation mode, we want a random record without an annotations. 
   def self.get_random_by_language(language)
-    records = Note.where(language: language, :approved_counter.lt => 3)
+    records = Note.where(language: language, :approved_counter.lt => 2)
     cnt = ( records.count - 1 ) 
     offset = rand(cnt)
     records.skip(offset).limit(1).map { |r| r.randomized = true; r }

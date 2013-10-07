@@ -10,7 +10,7 @@ class Annotation
   field :role, type: String
   field :role_translation, :type => String
   field :role_language, :type => String
-  field :approved, :type => Boolean, :default => false
+  field :approved, :type => Boolean, :default => true 
   field :comment
 
   embedded_in :note
