@@ -13,7 +13,7 @@ class ReviewController < ApplicationController
     params[:page] ||= 1
     params[:per_page] ||= 20
     
-    @notes =  Note.needs_approval.paginate(:page => params[:page], :per_page => params[:per_page])
+    @notes =  Note.all.paginate(:page => params[:page], :per_page => params[:per_page])
     
     anno = @notes.collect { |n| n.annotations }
     @annotations = anno.flatten
