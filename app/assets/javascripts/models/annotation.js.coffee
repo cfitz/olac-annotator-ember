@@ -4,7 +4,7 @@ App.Annotation = DS.Model.extend(
   role: DS.attr("string")
   role_language: DS.attr("string")
   role_translation: DS.attr('string')
-  approved: DS.attr("boolean")
+  approved: DS.attr("boolean", {defaultValue: true })
   note: DS.belongsTo('App.Note')
   comment: DS.attr("string")
   didCreate: ->

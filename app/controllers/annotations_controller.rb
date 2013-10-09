@@ -4,7 +4,7 @@ class AnnotationsController < ApplicationController
   def create
     a = Annotation.create(annotation_params)
     a.note.save
-    respond_with a
+    respond_with a, status: :ok
   end
   
   private

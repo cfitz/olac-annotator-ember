@@ -48,6 +48,12 @@ gem "will_paginate_mongoid"
 
 gem 'marc'
 
+group :development, :test do
+  gem 'rspec-rails', '~> 2.0'
+  gem 'mongoid-rspec'
+  gem 'database_cleaner'
+end
+ 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 
@@ -55,7 +61,7 @@ gem 'marc'
 gem 'unicorn'
 
 # Use Capistrano for deployment
-gem 'capistrano', group: :development
+gem 'capistrano', '~> 2.15.5', group: :development
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]
