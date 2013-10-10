@@ -13,11 +13,6 @@ class Record
   
   index({ language: 1 }, { unique: false })
   
-  def to_marc
-    self.marc_hash ? convert_hash_to_marc(self.marc_hash)   : ""
-  end
-  
-  
   protected
   
   def set_authority_names
@@ -42,18 +37,5 @@ class Record
 
         self.authority_names = results.sort_by { |r| r[:name] }
      end
-   end
-  
-   def ensure_marc_hash
-      if marc_string.blank?
-         self.marc_hash = MARC::Reader.new(Rails.root.join("doc/sample.mrc").to_s).first.to_marchash
-       else
-         self.marc_hash = MARC::Reader.new(StringIO.new(marc_string)).first.to_marchash
-       end
-   end
-  
-  
-  
-  
-
+  end
 end
