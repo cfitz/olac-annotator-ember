@@ -12,7 +12,7 @@
 
 App = Em.Application.create({LOG_TRANSITIONS: true});
 
-App.cameFromHomepage = false
+App.cameFromHomepage = false;
 
 // this are langauages to be selected in the form
 App.languages = [

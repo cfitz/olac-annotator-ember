@@ -52,6 +52,8 @@ group :development, :test do
   gem 'rspec-rails', '~> 2.0'
   gem 'mongoid-rspec'
   gem 'database_cleaner'
+  gem 'qunit-rails'
+
 end
 gem 'simplecov', :require => false, :group => :test 
 # Use ActiveModel has_secure_password
@@ -59,6 +61,8 @@ gem 'simplecov', :require => false, :group => :test
 
 # Use unicorn as the app server
 gem 'unicorn'
+gem 'thin', require: false
+
 
 # Use Capistrano for deployment
 gem 'capistrano', '~> 2.15.5', group: :development
