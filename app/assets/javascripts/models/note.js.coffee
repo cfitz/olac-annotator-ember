@@ -2,6 +2,7 @@ App.Note = DS.Model.extend(
   input_field: DS.attr("string")
   record_title: DS.attr('string')
   text: DS.attr('string')
+  approved_counter: DS.attr('number')
   language: DS.attr('string')
   marc_language: DS.attr('string')
   annotations: DS.hasMany('App.Annotation')

@@ -28,18 +28,18 @@ class Note
     record.authority_names
   end
   
-  before_save :update_approved_counter 
   scope :needs_approval, where(:needs_approved_counter.gt => 0 ).order_by(:need_approved_counter => :asc)
   scope :annotated, where(:approved_counter.gt => 0).order_by(:created_at => :asc )  
+
+  
+  def update_approved_counter
+    self.approved_counter += 1
+    self
+  end
   
   protected
   
-  
-  def update_approved_counter
-    self.approved_counter = 0 
-    self.needs_approved_counter = 0
-    self.annotations.each { |a|  a.approved? ? self.approved_counter += 1 : self.needs_approved_counter += 1  }  
-  end
+
   
   
   # When we are in annotation mode, we want a random record without an annotations. 

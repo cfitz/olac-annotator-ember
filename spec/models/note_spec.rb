@@ -6,10 +6,11 @@ describe Note do
     n = Note.create(:language => "english")
     Note.get_random_by_language("english").first.id.should == n.id
     n.annotations.create
-    n.save
-    n.approved_counter.should == 1
+    n.approved_counter += 1
+    n.save    
     Note.get_random_by_language("english").first.id.should == n.id
     n.annotations.create
+    n.approved_counter += 1
     n.save
     n.approved_counter.should == 2 
     Note.get_random_by_language("english").should == []

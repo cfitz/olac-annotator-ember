@@ -19,3 +19,24 @@ test("editingMode", function(){
   equal(annotationEditController.hasError(), undefined);
   
 });
+
+test("return role warning", function() { 
+  var annotationEditController = this.annotationEditController;
+  annotationEditController.set('role', "directory");
+  equal(annotationEditController.checkWarnings('role'), false);
+  annotationEditController.set('role', "director and producer");
+  equal(annotationEditController.checkWarnings('role'), true);
+  annotationEditController.set('role', "director & producer");
+  equal(annotationEditController.checkWarnings('role'), true);
+  annotationEditController.set('role', "director + producer");
+  equal(annotationEditController.checkWarnings('role'), true);
+  annotationEditController.set('role', "director / producer");
+  equal(annotationEditController.checkWarnings('role'), true);
+  annotationEditController.set('role', "director , producer");
+  equal(annotationEditController.checkWarnings('role'), true);
+ 
+
+
+
+});
+

@@ -6,6 +6,8 @@ App.NoteAnnotateController = Ember.ObjectController.extend({
   commentOrProblem: null
   startAnnotating: () ->
     note = this.get('model')
+    number = note.get('approved_counter')
+    note.set('approved_counter', number += 1 )
     transaction = note.get('store').transaction()
     transaction.add(note)
     transaction.add(note.get('annotations').createRecord())

@@ -12,11 +12,20 @@ class NotesController < ApplicationController
     end
    end
   
-  
+  # all this needs to do is update the approved counter that we're pushing a session.
+  def update
+    note = Note.find(params[:id])
+    note.approved_counter += 1
+    respond_with note
+   end
   
   def show
     respond_with Note.find(params[:id])
   end
+  
+  private
+  
+
   
   
 end
