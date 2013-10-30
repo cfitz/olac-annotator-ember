@@ -29,7 +29,7 @@ class Note
   end
   
   scope :needs_approval, where(:needs_approved_counter.gt => 0 ).order_by(:need_approved_counter => :asc)
-  scope :annotated, where(:approved_counter.gt => 0).order_by(:created_at => :asc )  
+  scope :annotated, where(:approved_counter.gt => 0).order_by(:updated_at => :desc )  
 
   
   def update_approved_counter
