@@ -6,8 +6,7 @@ App.NoteAnnotateController = Ember.ObjectController.extend({
   commentOrProblem: null
   startAnnotating: () ->
     note = this.get('model')
-    number = note.get('approved_counter')
-    note.set('approved_counter', number += 1 )
+   
     transaction = note.get('store').transaction()
     transaction.add(note)
     transaction.add(note.get('annotations').createRecord())
@@ -30,6 +29,9 @@ App.NoteAnnotateController = Ember.ObjectController.extend({
       this.commit()
 
   commit: () ->
+    note = this.get('model')
+    number = note.get('approved_counter')
+    note.set('approved_counter', number += 1 )
     language = this.get('model.language')
     this.set('language', language)
     this.transaction.commit()

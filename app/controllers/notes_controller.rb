@@ -16,7 +16,7 @@ class NotesController < ApplicationController
   def update
     note = Note.find(params[:id])
     note.approved_counter += 1
-    respond_with note
+    respond_with note.save
    end
   
   def show
