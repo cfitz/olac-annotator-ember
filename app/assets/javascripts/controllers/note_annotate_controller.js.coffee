@@ -1,12 +1,12 @@
 App.NoteAnnotateController = Ember.ObjectController.extend({
   needs: [ 'notesRandom', 'annotationEdits' ]
   recordNumber: 1
+  savedCounter: 0
   language: 'english'
   isNoteInvalid: true
   commentOrProblem: null
   startAnnotating: () ->
     note = this.get('model')
-   
     transaction = note.get('store').transaction()
     transaction.add(note)
     transaction.add(note.get('annotations').createRecord())
@@ -34,6 +34,8 @@ App.NoteAnnotateController = Ember.ObjectController.extend({
     note.set('approved_counter', number += 1 )
     language = this.get('model.language')
     this.set('language', language)
+    savedCounter = this.get('savedCounter')
+    this.set('savedCounter', savedCounter + 1 )
     this.transaction.commit()
   
   annotationUpdated: (->
