@@ -37,10 +37,10 @@ App.NoteAnnotateView = Ember.View.extend
   updateMessage : (->
     counter = this.get('controller.savedCounter')
     if counter == 1
-      message = "<h4 class='text-center'>You've annotated a record! Please continue.</h3>"
+      message = "<h4 class='text-center'>You've annotated a credit! Please continue.</h3>"
       this.showSuccess(message)
-    if counter > 1 
-      message = '<h4 class="text-center">' + this.get('controller.savedCounter') + ' records annotated.</h4>' 
+    if counter > 1
+      message = '<h4 class="text-center">' + this.get('controller.savedCounter') + ' credits annotated.</h4>' 
       this.showSuccess(message)
   ).observes('controller.savedCounter')
   showSuccess: (text) ->
