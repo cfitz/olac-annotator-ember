@@ -63,6 +63,7 @@ App.languages = [
   Ember.Object.create({ value: "serbian", label: "Serbian" }),
   Ember.Object.create({ value: "serbo-Croatian (unspecified)", label: "Serbo-Croatian (unspecified)" }),
   Ember.Object.create({ value: "sindhi", label: "Sindhi" }),
+  Ember.Object.create({ value: "slovak", label: "Slovak" }),
   Ember.Object.create({ value: "slovenian", label: "Slovenian" }),
   Ember.Object.create({ value: "spanish", label: "Spanish" }),
   Ember.Object.create({ value: "swedish", label: "Swedish" }),
